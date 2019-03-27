@@ -1,0 +1,12 @@
+sudo: required
+
+language: generic
+
+before_script:
+  - curl -s https://github.com/mvdan/sh/releases/download/v2.6.4/shfmt_v2.6.4_linux_amd64 -o /usr/local/bin/shfmt && chod +x /usr/local/bin/shfmt
+  - curl -s "https://storage.googleapis.com/shellcheck/shellcheck-stable.linux.x86_64.tar.xz" | tar -xJv && cp shellcheck-stable/shellcheck /usr/bin/
+
+script:
+  - shfmt --version
+  - shellcheck --version
+  - make test
